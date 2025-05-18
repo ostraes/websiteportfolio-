@@ -1,0 +1,118 @@
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        @keyframes rotatingShadow {
+        0% { box-shadow: 10px 0 15px #ff0000; }
+        25% { box-shadow: 0 10px 15px #00ff00; }
+        50% { box-shadow: -10px 0 15px #0000ff; }
+        75% { box-shadow: 0 -10px 15px #ff00ff; }
+        100% { box-shadow: 10px 0 15px #ff0000; }
+        }
+
+        #myphoto {
+        animation: rotatingShadow 3s infinite linear;
+        }
+        
+
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #3f434b 0%, #252525 100%);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay {
+            background: rgba(0, 0, 0, 0.7);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .active-nav:after {
+            width: 100%;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .about-content {
+                flex-direction: column;
+            }
+            .portfolio-filter {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .portfolio-filter button {
+                margin-bottom: 8px;
+            }
+            .contact-content {
+                flex-direction: column;
+            }
+            .contact-info {
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+            .contact-social {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .skill-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .skill-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }

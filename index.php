@@ -1,0 +1,834 @@
+<?php
+session_start();?>
+<?php if (isset($_SESSION['flash'])): ?>
+    
+<div id="toast-msg" class="fixed top-20 right-5 bg-green-100 border border-green-400 text-green-700 px-4 py-2 rounded shadow-lg z-50 max-w-xs">
+    <?php echo $_SESSION['flash']; unset($_SESSION['flash']); ?>
+</div>
+<script>
+    setTimeout(() => {
+        const toast = document.getElementById('toast-msg');
+        if (toast) toast.remove();
+    }, 5000);
+</script>
+<?php endif; ?>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ostraes Jasmine | IT Student & Creative Freelancer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-xl font-bold text-gray">Ostraes Jasmine</span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#home" class="nav-link active-nav text-gray-900 px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="#about" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">About</a>
+                        <a href="#skills" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">Skills</a>
+                        <a href="#portfolio" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">Portfolio</a>
+                        <a href="#services" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">Services</a>
+                        <a href="#contact" class="nav-link text-gray-500 hover:text-gray-900 px-3 py-2 text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-base font-medium text-gray-900 hover:bg-gray-100">Home</a>
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100">About</a>
+                <a href="#skills" class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100">Skills</a>
+                <a href="#portfolio" class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100">Portfolio</a>
+                <a href="#services" class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100">Services</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    
+    <!-- Hero Section -->
+    <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24 hero-gradient text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center hero-content">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                        Hi, I'm <span class="gradient-text">Ostraes</span>
+                    </h1>
+                    <h2 class="text-xl md:text-2xl font-medium mb-6">
+                        IT Student & Creative Freelancer
+                    </h2>
+                    <p class="text-lg mb-8 text-gray-100 max-w-lg">
+                        Bridging technology and creativity to deliver exceptional digital solutions. 
+                        Specializing in video editing, photo manipulation, graphic design, and academic assistance.
+                    </p>
+                    <div class="flex space-x-4 hero-buttons">
+                        <a href="#contact" class="px-6 py-3 bg-white text-gray-800 font-medium rounded-lg hover:bg-gray-100 transition duration-300">
+                            Hire Me
+                        </a>
+                        <a href="#portfolio" class="px-6 py-3 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-blue-600 transition duration-300">
+                            View Work
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div id="myphoto" class="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white ">
+                        <img src='images/me1.jpg' 
+                              class="w-full h-full object-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-gray-300">About <span class="gradient-text">Me</span></h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            
+            <div class="md:flex items-center about-content">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="relative w-48 h-48 sm:w-64 sm:h-64 rounded-lg overflow-hidden shadow-lg">
+                        <img src= 'images/me2.jpeg'
+                               class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-bold mb-4 text-gray-300">IT Student</h3>
+                    <p class=" mb-6 text-white">
+                        A motivated BSIT student seeking an On-the-Job Training opportunity to apply technical skills and gain real-world experience in the IT industry. Eager to contribute to a dynamic team and enhance knowledge in areas such as software development, networking, or technical support
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                        <div>
+                            <h4 class="font-bold mb-2 text-gray-300">Education</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-graduation-cap text-blue-500 mt-1 mr-2"></i>
+                                    <span class="text-white" >BS in Information Technology - Saint Jude College (2023-2027)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-certificate text-blue-500 mt-1 mr-2"></i>
+                                    <span class="text-white">Information and Communications Technology - AMA University with high honor</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold mb-2 text-gray-300">Experience</h4>
+                            <ul class="space-y-2">
+                                <li class="flex items-start">
+                                    <i class="fas fa-briefcase text-blue-500 mt-1 mr-2"></i>
+                                    <span class="text-white">Freelance Academic Assistance (2018-2024)</span>
+                                </li>
+                                
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-wrap gap-4 justify-center md:justify-start">
+                        <a href="https://www.linkedin.com/in/ostraes-jasmine-20620a315/" class="px-4 py-2 bg-blue-100 text-blue-600 rounded-full flex items-center">
+                            <i class='bx bxl-linkedin mr-2'></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/ostraes" class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full flex items-center">
+                            <i class='bx bxl-github'></i> GitHub
+                        </a>
+                        <a href="https://www.instagram.com/_jas.do.it_/" class="px-4 py-2 bg-pink-100 text-pink-600 rounded-full flex items-center">
+                            <i class='bx bxl-instagram mr-2' ></i> Instagram
+                        </a>
+                        <a href="https://www.tiktok.com/@_jas.do.it" class="px-4 py-2 bg-red-100 text-red-600 rounded-full flex items-center">
+                            <i class='bx bxl-tiktok' ></i> TikTok
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-gray-300">My <span class="gradient-text">Skills</span></h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 skill-grid">
+                <!-- Video Editing -->
+                <div class="bg-white p-6 rounded-xl shadow-md skill-card transition duration-300">
+                    <div class="text-gray-500 text-4xl mb-4">
+                        <i class="fas fa-film "></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Video Editing</h3>
+                    <p class="text-gray-600 mb-4">
+                        Professional video editing with expertise in Adobe Premiere Pro, After Effects, and DaVinci Resolve.
+                    </p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-gray-600 h-2.5 rounded-full" style="width: 95%"></div>
+                    </div>
+                </div>
+                
+                <!-- Photo Editing -->
+                <div class="bg-white p-6 rounded-xl shadow-md skill-card transition duration-300">
+                    <div class="text-gray-500 text-4xl mb-4">
+                        <i class="fas fa-camera-retro"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Photo Editing</h3>
+                    <p class="text-gray-600 mb-4">
+                        Advanced photo manipulation and retouching using Photoshop and Lightroom.
+                    </p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-gray-600 h-2.5 rounded-full" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <!-- Graphic Design -->
+                <div class="bg-white p-6 rounded-xl shadow-md skill-card transition duration-300">
+                    <div class="text-gray-500 text-4xl mb-4">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Graphic Design</h3>
+                    <p class="text-gray-600 mb-4">
+                        Creating stunning visuals with Illustrator, InDesign, and Canva for branding and marketing.
+                    </p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-gray-600 h-2.5 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <!-- Academic Assistance -->
+                <div class="bg-white p-6 rounded-xl shadow-md skill-card transition duration-300">
+                    <div class="text-gray-500 text-4xl mb-4">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Academic Assistance</h3>
+                    <p class="text-gray-600 mb-4">
+                        Tutoring and academic support in IT subjects, research, and technical writing.
+                    </p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-gray-600 h-2.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <!-- Web Development -->
+                <div class="bg-white p-6 rounded-xl shadow-md skill-card transition duration-300">
+                    <div class="text-gray-500 text-4xl mb-4">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Web Development</h3>
+                    <p class="text-gray-600 mb-4">
+                        Building responsive websites with HTML, CSS, JavaScript, and modern frameworks.
+                    </p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-gray-600 h-2.5 rounded-full" style="width: 75%"></div>
+                    </div>
+                </div>
+                
+                <!-- UI/UX Design -->
+                <div class="bg-white p-6 rounded-xl shadow-md skill-card transition duration-300">
+                    <div class="text-gray-500 text-4xl mb-4">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">UI/UX Design</h3>
+                    <p class="text-gray-600 mb-4">
+                        Designing intuitive user interfaces and experiences with Figma.
+                    </p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-gray-600 h-2.5 rounded-full" style="width: 70%"></div>
+                    </div>
+                </div>
+                
+                <!-- Backend  -->
+                <div class="bg-white p-6 rounded-xl shadow-md skill-card transition duration-300">
+                    <div class="text-gray-500 text-4xl mb-4">
+                        <i class='bx bxs-data' ></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Backend</h3>
+                    <p class="text-gray-600 mb-4">
+                        PHP and XAMPP power the backend by handling requests, processing data, and managing databases locally.
+                    </p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-gray-600 h-2.5 rounded-full" style="width: 85%"></div>
+                    </div>
+                </div>
+                
+                <!-- IT Support -->
+                <div class="bg-white p-6 rounded-xl shadow-md skill-card transition duration-300">
+                    <div class="text-gray-500 text-4xl mb-4">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">IT Support</h3>
+                    <p class="text-gray-600 mb-4">
+                        Troubleshooting hardware/software issues and providing technical solutions.
+                    </p>
+                    <div class="w-full bg-gray-200 rounded-full h-2.5">
+                        <div class="bg-gray-600 h-2.5 rounded-full" style="width: 80%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-16 bg-gray-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-gray-300">My <span class="gradient-text">Portfolio</span></h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+
+            <div class="flex justify-center mb-8 portfolio-filter">
+                <div class="inline-flex flex-wrap rounded-md shadow-sm" role="group">
+                    <button type="button" data-filter="all" class="filter-btn px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-gray-200 rounded-l-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-gray-700">
+                        All Work
+                    </button>
+                    <button type="button" data-filter="video" class="filter-btn px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-gray-700">
+                        Video Editing
+                    </button>
+                    <button type="button" data-filter="photo" class="filter-btn px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-gray-700">
+                        Photo Editing
+                    </button>
+                    <button type="button" data-filter="graphic" class="filter-btn px-4 py-2 text-sm font-medium text-gray-900 bg-white border-t border-b border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-gray-700">
+                        Graphic Design
+                    </button>
+                    <button type="button" data-filter="academic" class="filter-btn px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-lg hover:bg-gray-100 focus:z-10 focus:ring-2 focus:ring-gray-700">
+                        Academic Projects
+                    </button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-items">
+                <div class="portfolio-item video relative rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?..." alt="Video Editing Project" class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 flex flex-col justify-center items-center opacity-0 p-6">
+                        <h3 class="text-white text-xl font-bold mb-2">Corporate Video</h3>
+                        <p class="text-white text-center mb-4">Professional corporate video editing with motion graphics</p>
+                        <a href="#" class="px-4 py-2 bg-white text-gray-600 rounded-lg font-medium">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item photo relative rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?..." alt="Photo Editing Project" class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 flex flex-col justify-center items-center opacity-0 p-6">
+                        <h3 class="text-white text-xl font-bold mb-2">Product Retouching</h3>
+                        <p class="text-white text-center mb-4">High-end product photo editing for e-commerce</p>
+                        <a href="#" class="px-4 py-2 bg-white text-gray-600 rounded-lg font-medium">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item graphic relative rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?..." alt="Graphic Design Project" class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 flex flex-col justify-center items-center opacity-0 p-6">
+                        <h3 class="text-white text-xl font-bold mb-2">Brand Identity</h3>
+                        <p class="text-white text-center mb-4">Complete branding package for startup company</p>
+                        <a href="#" class="px-4 py-2 bg-white text-gray-600 rounded-lg font-medium">View Project</a>
+                    </div>
+                </div>
+                <div class="portfolio-item academic relative rounded-xl overflow-hidden shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?..." alt="Academic Project" class="w-full h-64 object-cover">
+                    <div class="portfolio-overlay absolute inset-0 flex flex-col justify-center items-center opacity-0 p-6">
+                        <h3 class="text-white text-xl font-bold mb-2">Research Dashboard</h3>
+                        <p class="text-white text-center mb-4">Data visualization for academic research project</p>
+                        <a href="#" class="px-4 py-2 bg-white text-gray-600 rounded-lg font-medium">View Project</a>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-gray-300">My <span class="gradient-text">Services</span></h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 services-grid">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Video Editing</h3>
+                    <p class="text-gray-600 mb-6">
+                        Professional video editing services including cutting, color grading, motion graphics, and special effects for all types of video content.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>YouTube videos & vlogs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Corporate & promotional videos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Music videos & short films</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Social media content</span>
+                        </li>
+                    </ul>
+                    <div class="font-bold text-blue-600">Starting at $50/video</div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Photo Editing</h3>
+                    <p class="text-gray-600 mb-6">
+                        High-quality photo retouching, manipulation, and enhancement services to make your images stand out.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Product photo editing</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Portrait retouching</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Background removal & replacement</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Color correction & enhancement</span>
+                        </li>
+                    </ul>
+                    <div class="font-bold text-blue-600">Starting at $15/image</div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-pencil-ruler"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Graphic Design</h3>
+                    <p class="text-gray-600 mb-6">
+                        Creative graphic design solutions for branding, marketing, and digital media needs.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Logo & brand identity</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Social media graphics</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Print materials (flyers, brochures)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Infographics & presentations</span>
+                        </li>
+                    </ul>
+                    <div class="font-bold text-blue-600">Starting at $30/design</div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Web Design</h3>
+                    <p class="text-gray-600 mb-6">
+                        Custom website design and development tailored to your business needs and brand identity.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Responsive website design</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>UI/UX design</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Landing pages</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Website maintenance</span>
+                        </li>
+                    </ul>
+                    <div class="font-bold text-blue-600">Starting at $200/project</div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Academic Assistance</h3>
+                    <p class="text-gray-600 mb-6">
+                        Expert tutoring and academic support for IT students and professionals.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Programming help (Python, Java, etc.)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Database design & SQL</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Research paper assistance</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Presentation design</span>
+                        </li>
+                    </ul>
+                    <div class="font-bold text-blue-600">Starting at $20/hour</div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition duration-300">
+                    <div class="text-blue-500 text-4xl mb-6">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">IT Support</h3>
+                    <p class="text-gray-600 mb-6">
+                        Technical support and troubleshooting for software and hardware issues.
+                    </p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Software installation & configuration</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>System troubleshooting</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Creative software setup</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check text-blue-500 mt-1 mr-2"></i>
+                            <span>Basic network setup</span>
+                        </li>
+                    </ul>
+                    <div class="font-bold text-blue-600">Starting at $25/hour</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-gray-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-gray-300">Client <span class="gradient-text">Testimonials</span></h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="images/" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Name </h4>
+                            <p class="text-gray-500 text-sm">Ganap / Position</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        "Statement."
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="images/" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Name</h4>
+                            <p class="text-gray-500 text-sm">Ganap / Position</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        "Statement"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                            <img src="images/" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Name</h4>
+                            <p class="text-gray-500 text-sm">Ganap / Position</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        "Statement"
+                    </p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 text-gray-300">Get In <span class="gradient-text">Touch</span></h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            
+            <div class="md:flex contact-content">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-8 contact-info">
+                    <h3 class="text-xl font-bold mb-6 text-gray-200">Let's talk about your project</h3>
+                    <p class="text-white mb-8">
+                        Whether you need creative services or academic assistance, I'm here to help. Fill out the form or contact me directly using the information below.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class='bx bxs-envelope'></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-200">Email</h4>
+                                <p class="text-white">jasmineostraes@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class='bx bxs-phone' ></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-200">Phone</h4>
+                                <p class="text-white">09356180582</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                <i class='bx bxs-map'></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-200">Location</h4>
+                                <p class="text-white">Quezon City Philippines</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-bold mb-4 text-white">Follow Me</h4>
+                        <div class="flex space-x-4 contact-social">
+                            <a href="https://www.linkedin.com/in/ostraes-jasmine-20620a315/" class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-gray-700 hover:bg-gray-500 hover:text-white transition duration-300">
+                                <i class='bx bxl-linkedin-square' ></i>
+                            </a>
+                            <a href="https://www.instagram.com/_jas.do.it_/" class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-gray-700 hover:bg-gray-500 hover:text-white transition duration-300">
+                                <i class='bx bxl-instagram-alt' ></i>
+                            </a>
+                            <a href="https://www.facebook.com/jasmine.p.ostraes" class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-gray-700 hover:bg-gray-500 hover:text-white transition duration-300">
+                                <i class='bx bxl-facebook' ></i>
+                            </a>
+                            <a href="https://www.tiktok.com/@_jas.do.it_" class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-gray-700 hover:bg-gray-500 hover:text-white transition duration-300">
+                                <i class='bx bxl-tiktok' ></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <form action="send_email.php" method="POST" class="bg-white p-6 rounded-xl shadow-md">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Full Name</label>
+                            <input type="text" name="name" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your name">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" name="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your email">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                            <input type="text" name="subject" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Subject">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea name="message" id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition duration-300">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex md:items-center md:justify-between">
+                <div class="flex justify-center md:order-2 space-x-6">
+                    <a href="https://www.linkedin.com/in/ostraes-jasmine-20620a315/" class="text-gray-400 hover:text-white">
+                        <i class='bx bxl-linkedin-square' ></i>
+                    </a>
+                    <a href="https://www.instagram.com/_jas.do.it_/" class="text-gray-400 hover:text-white">
+                        <i class='bx bxl-instagram-alt' ></i>
+                    </a>
+                    <a href="https://www.facebook.com/jasmine.p.ostraes" class="text-gray-400 hover:text-white">
+                        <i class='bx bxl-facebook' ></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@_jas.do.it_" class="text-gray-400 hover:text-white">
+                        <i class='bx bxl-tiktok' ></i>
+                    </a>
+                </div>
+                <div class="mt-8 md:mt-0 md:order-1">
+                    <p class="text-center text-gray-400">
+                        &copy; 2023 Jasmine Ostraes. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                document.getElementById('mobile-menu').classList.add('hidden');
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active-nav');
+                    link.classList.add('text-gray-500');
+                    link.classList.remove('text-gray-900');
+                });
+                
+                this.classList.add('active-nav');
+                this.classList.remove('text-gray-500');
+                this.classList.add('text-gray-900');
+            });
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                link.classList.add('text-gray-500');
+                link.classList.remove('text-gray-900');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                    link.classList.remove('text-gray-500');
+                    link.classList.add('text-gray-900');
+                }
+            });
+        });
+
+        // Portfolio type filter
+        document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+            const items = document.querySelectorAll('.portfolio-item');
+
+            items.forEach(item => {
+                if (filter === 'all' || item.classList.contains(filter)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('bg-gray-100', 'text-blue-600'));
+            button.classList.add('bg-gray-100', 'text-blue-600');
+        });
+    });
+    </script>
+</body>
+</html>
